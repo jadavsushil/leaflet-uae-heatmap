@@ -1,1 +1,1 @@
-require('.src/BoundaryCanvas.js')
+require('./src/BoundaryCanvas.js')
