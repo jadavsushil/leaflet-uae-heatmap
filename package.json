@@ -1,0 +1,19 @@
+{
+  "name": "leaflet-uae-heatmap",
+  "version": "1.0.0",
+  "description": "Leaflet map with canvas and heatmap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jadavsushil/leaflet-uae-heatmap.git"
+  },
+  "author": "Jadav Sushil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jadavsushil/leaflet-uae-heatmap/issues"
+  },
+  "homepage": "https://github.com/jadavsushil/leaflet-uae-heatmap#readme"
+}

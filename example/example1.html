@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+    <script src="https://cdn.rawgit.com/aparshin/leaflet-boundary-canvas/f00b4d35/src/BoundaryCanvas.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="http://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js">
+    </script>
+    <script src="heatmapdata.js"></script>
+    <style>
+        #map {
+            height: 500px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    
+    <script>
+
+        var map = L.map("map");
+
+        $.getJSON('https://cdn.rawgit.com/johan/world.geo.json/34c96bba/countries/ARE.geo.json').then(function (geoJSON) {
+            var osm = new L.TileLayer.BoundaryCanvas("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                boundary: geoJSON,
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, UK shape <a href="https://github.com/johan/world.geo.json">johan/word.geo.json</a>'
+            });
+            map.addLayer(osm);
+            var ukLayer = L.geoJSON(geoJSON);
+            map.fitBounds(ukLayer.getBounds());
+        });
+
+        var heat = L.heatLayer(quakePoints, {
+            radius: 20,
+            blur: 15,
+            maxZoom: 17,
+            minZoom: 5,
+            gradient: {
+                0.0: 'green',
+                0.5: 'yellow',
+                1.0: 'red'
+            }
+        }).addTo(map);
+    </script>
+</body>
+
+</html>
