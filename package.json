@@ -3,8 +3,13 @@
   "version": "1.0.1",
   "description": "Leaflet map with canvas and heatmap",
   "main": "index.js",
+  "devDependencies": {
+    "simpleheat": "~0.2.0",
+    "uglify-js": "~2.4.15"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "uglifyjs node_modules/simpleheat/simpleheat.js src/HeatLayer.js -c -m --comments /Vladimir/ -o dist/leaflet-heat.js"
   },
   "repository": {
     "type": "git",
